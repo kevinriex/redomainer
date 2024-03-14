@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+  redomainer:
+    container_name: redomainer
+    build: ./container
+    volumes: 
+    - ./config:/storage/config:ro
