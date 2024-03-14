@@ -4,6 +4,7 @@ RUN apt update && apt upgrade -y
 
 # Installation
 RUN apt install python3 nginx python3-certbot-nginx -y
+RUN apt purge apache2
 
 RUN mkdir /storage
 
@@ -14,6 +15,7 @@ ADD nginx/ /storage/nginx/
 # Script
 ADD start.sh /storage/start.sh
 ADD main.py /storage/main.py
+ADD certs.py /storage/certs.py
 ADD site.conf /storage/site.conf
 
 RUN chmod +x /storage/start.sh
