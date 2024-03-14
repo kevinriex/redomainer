@@ -3,7 +3,7 @@ FROM debian:latest
 RUN apt update && apt upgrade -y
 
 # Installation
-RUN apt install python3 nginx -y
+RUN apt install python3 nginx python3-certbot-nginx -y
 
 RUN mkdir /storage
 

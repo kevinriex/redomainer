@@ -4,4 +4,9 @@ services:
     container_name: redomainer
     build: ./container
     volumes: 
-    - ./config:/storage/config:ro
+    - ./config/:/storage/config/:ro
+    - ./logs/:/var/log/nginx/
+    - ./certs/:/etc/letsencrypt/archive/
+    ports:
+      - "80:80"
+      - "443:443"
