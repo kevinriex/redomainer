@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -rf /etc/nginx/sites-enabled/default
 ln -sr /storage/nginx/nginxconfig.io /etc/nginx
 python3 -u /storage/main.py
 ln -sr /etc/nginx/sites-available/*.conf /etc/nginx/sites-enabled

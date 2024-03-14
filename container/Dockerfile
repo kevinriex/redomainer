@@ -1,6 +1,6 @@
 FROM debian:latest
 
-RUN apt update && apt upgrade lsof -y
+RUN apt update && apt upgrade -y
 
 # Installation
 RUN apt install python3 nginx python3-certbot-nginx -y
@@ -9,6 +9,7 @@ RUN mkdir /storage
 
 # NGINX
 EXPOSE 80/tcp
+EXPOSE 443/tcp
 ADD nginx/ /storage/nginx/
 
 # Script
