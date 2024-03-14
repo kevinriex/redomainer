@@ -14,9 +14,9 @@ for site in sites:
     from_domain = list(filter(None, re.split(r"(?:.*:\/\/)(?P<domain>.*)(?:\/.*)?", site["from"])))[0]
     to_domain = list(filter(None, re.split(r"(?:.*:\/\/)(?P<domain>.*)(?:\/.*)?", site["to"])))[0]
     siteconfigstr = site_conf.replace("~~FROM~~", from_domain).replace("~~TO~~", to_domain).replace("~~TO_URL~~", site["to"])
-    #print(siteconfigstr)
-    with open(f"/storage/nginx/sites-available/{from_domain.replace('.','-')}_{to_domain.replace('.','-')}.conf", "w+") as siteconfig:
+    with open(f"/etc/nginx/sites-available/{from_domain.replace('.','-')}_{to_domain.replace('.','-')}.conf", "w+") as siteconfig:
         siteconfig.writelines(siteconfigstr)
+    #print(siteconfigstr)
 
     with open(f"/var/log/nginx/{from_domain}_{to_domain}_access.log", "w+"):
         pass

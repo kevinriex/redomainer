@@ -1,10 +1,9 @@
 FROM debian:latest
 
-RUN apt update && apt upgrade -y
+RUN apt update && apt upgrade lsof -y
 
 # Installation
 RUN apt install python3 nginx python3-certbot-nginx -y
-RUN apt purge apache2
 
 RUN mkdir /storage
 
