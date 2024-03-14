@@ -1,6 +1,5 @@
 import json
 import re
-import os
 
 with open("/storage/config/sites.json") as sites_file:
     sites = json.load(sites_file)
@@ -16,14 +15,11 @@ for site in sites:
     siteconfigstr = site_conf.replace("~~FROM~~", from_domain).replace("~~TO~~", to_domain).replace("~~TO_URL~~", site["to"])
     with open(f"/etc/nginx/sites-available/{from_domain.replace('.','-')}_{to_domain.replace('.','-')}.conf", "w+") as siteconfig:
         siteconfig.writelines(siteconfigstr)
-    #print(siteconfigstr)
 
     with open(f"/var/log/nginx/{from_domain}_{to_domain}_access.log", "w+"):
         pass
-    #print(f"/var/log/nginx/{from_domain}_{to_domain}_access.log ### created")
     with open(f"/var/log/nginx/{from_domain}_{to_domain}_error.log", "w+"):
         pass
-    #print(f"/var/log/nginx/{from_domain}_{to_domain}_error.log ### created")
 
     certs = f"{certs} -d {from_domain}"
 

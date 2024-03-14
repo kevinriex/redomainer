@@ -7,7 +7,6 @@ services:
     - ./config/:/storage/config/:ro
     - ./logs/:/var/log/nginx/
     - ./certs/:/etc/letsencrypt/
-    #- ./nginx/:/etc/nginx/ # TEST
     ports:
       - "80:80"
       - "443:443"
